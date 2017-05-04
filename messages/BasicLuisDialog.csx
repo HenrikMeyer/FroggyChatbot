@@ -10,7 +10,9 @@ using Microsoft.Bot.Builder.Luis.Models;
 [Serializable]
 public class BasicLuisDialog : LuisDialog<object>
 {
-    public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(Utils.GetAppSetting("6d182e04-46d7-4fc5-8d16-781d009c4df2"), Utils.GetAppSetting("2168efea8b0044299009eca55b812c0b"))))
+    //public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(Utils.GetAppSetting("6d182e04-46d7-4fc5-8d16-781d009c4df2"), Utils.GetAppSetting("2168efea8b0044299009eca55b812c0b"))))
+    //public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(Utils.GetAppSetting("6d182e04-46d7-4fc5-8d16-781d009c4df2"), Utils.GetAppSetting("GyoJfSOX9K0FOIBSvQBmquu2EHaNX05H"))))
+    public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(Utils.GetAppSetting("LuisAppId"), Utils.GetAppSetting("LuisAPIKey"))))
     {
     }
 

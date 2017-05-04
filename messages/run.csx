@@ -10,11 +10,12 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
+int counter = 0;
+
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"Webhook was triggered!");
-    log.Info($"NEW LINE!");
-
+    counter = counter + 1;
     // Initialize the azure bot
     using (BotService.Initialize())
     {

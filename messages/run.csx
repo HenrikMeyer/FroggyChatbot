@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-static int testID = 0;
+static Question actualQuestion;
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -35,15 +35,14 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  Question question = new Question("Wie war die Frage?", 0, new QuestionLink[]{});
+                  actualQuestion = new Question("Wie war die Frage?", 0, new QuestionLink[]{});
                   log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
-                  reply1.Text = "Willkommen! "+question.text+" "+testID;
+                  reply1.Text = "Willkommen! "+actualQuestion.text;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
                   testID++;
                   break;
-
 
                 case ActivityTypes.ConversationUpdate:
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));

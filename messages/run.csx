@@ -34,11 +34,11 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  QA qa = new QA();
+                  Question question = new QA("Wie war die Frage?", 0, new QuestionLink[]{});
                   log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
-                  reply1.Text = "Welcome"+qa.question;
+                  reply1.Text = "Welcome"+question.text;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
                   break;
 

@@ -101,7 +101,7 @@ public class QuestionLink
     }
 }
 
-public class Linker(){
+public class Linker{
 
   public Question[] questions;
 

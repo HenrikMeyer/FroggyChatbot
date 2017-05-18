@@ -94,7 +94,7 @@ public class QuestionLink
     public String text;
     public Question question;
 
-    public QuestionLink(String text, Question)
+    public void QuestionLink(String text, Question)
     {
       this.text = text;
       this.question = question;

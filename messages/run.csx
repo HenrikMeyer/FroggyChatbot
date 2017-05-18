@@ -15,6 +15,7 @@ static Question actualQuestion2 = new Question("Möchtest du Frage 1 hören?", 0
 actualQuestion1.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)};
 actualQuestion2.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion1)};
 
+static Question actualQuestion = actualQuestion1;
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"Webhook was triggered!");

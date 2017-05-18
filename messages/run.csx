@@ -75,16 +75,34 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     }
 }
 
-public class QA
+public class Question
 {
-    public String question = "Scheint bei dir die Sonne?";
-    public String answer1 = "Ja";
-    public String answer2 = "Nein";
+    String text;
+    int id;
+    QuestionLink[] links;
 
-    public QA()
+    public Question(String text, int id, QuestionLink[] links)
     {
-      question = "Scheint bei dir die Sonne?";
-      answer1 = "Ja";
-      answer2 = "Nein";
+      this.text = text;
+      this.id = id;
+      this.links = links;
     }
+}
+
+public class QuestionLink
+{
+    String text;
+    Question question
+
+    public QuestionLink(String text, Question)
+    {
+      this.text = text;
+      this.question = question;
+    }
+}
+
+public class Linker(){
+
+  Array<Question> questions;
+
 }

@@ -54,6 +54,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
+                /*
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                     IConversationUpdateActivity update = activity;
                     if (update.MembersAdded.Any())
@@ -71,6 +72,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                             await client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
+                    */
                     break;
                 case ActivityTypes.ContactRelationUpdate:
                 case ActivityTypes.Typing:

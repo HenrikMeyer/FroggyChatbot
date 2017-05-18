@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-int testID = 0;
+static int testID = 0;
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {

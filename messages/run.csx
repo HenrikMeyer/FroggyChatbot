@@ -103,6 +103,6 @@ public class QuestionLink
 
 public class Linker(){
 
-  public Array<Question> questions;
+  public Question[] questions;
 
 }

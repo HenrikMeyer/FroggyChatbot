@@ -92,7 +92,7 @@ public class Question
 public class QuestionLink
 {
     public String text;
-    public Question question
+    public Question question;
 
     public QuestionLink(String text, Question)
     {

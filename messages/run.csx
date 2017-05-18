@@ -34,11 +34,15 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
+                  QA qa = new QA();
+                  log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
                   reply1.Text = "Welcome";
                   await client1.Conversations.ReplyToActivityAsync(reply1);
                   break;
+
+
                 case ActivityTypes.ConversationUpdate:
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                     IConversationUpdateActivity update = activity;
@@ -68,5 +72,19 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             }
         }
         return req.CreateResponse(HttpStatusCode.Accepted);
+    }
+}
+
+public class QA
+{
+    public String question = "Scheint bei dir die Sonne?";
+    public String answer1 = "Ja";
+    public String answer2 = "Nein";
+
+    public QA()
+    {
+      question = "Scheint bei dir die Sonne?";
+      answer1 = "Ja";
+      answer2 = "Nein";
     }
 }

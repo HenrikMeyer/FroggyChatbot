@@ -50,7 +50,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   var reply1 = activity.CreateReply();
                   reply1.Text = "Willkommen! "+actualQuestion.text;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
-                  //actualQuestion = actualQuestion.links[0].question;
+                  actualQuestion = actualQuestion.links[0].question;
                   break;
 
                 case ActivityTypes.ConversationUpdate:

@@ -38,7 +38,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
-                  reply1.Text = "Welcome";
+                  reply1.Text = "Welcome"+qa.question;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
                   break;
 

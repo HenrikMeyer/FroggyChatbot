@@ -34,7 +34,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  Question question = new QA("Wie war die Frage?", 0, new QuestionLink[]{});
+                  Question question = new Question("Wie war die Frage?", 0, new QuestionLink[]{});
                   log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();

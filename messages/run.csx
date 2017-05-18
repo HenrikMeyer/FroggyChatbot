@@ -16,6 +16,7 @@ actualQuestion1.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion
 actualQuestion2.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion1)};
 
 static Question actualQuestion = actualQuestion1;
+
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"Webhook was triggered!");
@@ -39,7 +40,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  actualQuestion = actualQuestion.links[0].question;
+                  //actualQuestion = actualQuestion.links[0].question;
                   log.Info($"Initialized!");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();

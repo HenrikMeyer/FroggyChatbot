@@ -77,9 +77,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 public class Question
 {
-    String text;
-    int id;
-    QuestionLink[] links;
+    public String text;
+    public int id;
+    public QuestionLink[] links;
 
     public Question(String text, int id, QuestionLink[] links)
     {
@@ -91,8 +91,8 @@ public class Question
 
 public class QuestionLink
 {
-    String text;
-    Question question
+    public String text;
+    public Question question
 
     public QuestionLink(String text, Question)
     {
@@ -103,6 +103,6 @@ public class QuestionLink
 
 public class Linker(){
 
-  Array<Question> questions;
+  public Array<Question> questions;
 
 }

@@ -63,10 +63,10 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       found = true;
                       log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
                       if(users.ContainsKey(activity.From.Id)){
-                        users[activity.From.Id]="0";
+                        users[activity.From.Id]=questions[actualID].links[i].questionID;
                       }
                       else{
-                        users.Add(activity.From.Id+"", "0");
+                        users.Add(activity.From.Id+"", users[activity.From.Id]=questions[actualID].links[i].questionID;);
                       }
 
                       foreach(KeyValuePair<string, string> entry in users)

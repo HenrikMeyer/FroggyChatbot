@@ -33,8 +33,14 @@ static var questions = new Dictionary<String, Question>(){
       }
     )
   },
-  {"2", new Question("Ok, ich wünsche Dir noch einen schönen Tag!", new QuestionLink[]{
-
+  {
+    "2",
+    new Question(
+      "Ok, ich wünsche Dir noch einen schönen Tag!",
+      new QuestionLink[]{
+        
+      }
+    )
   }
 };
 //questions["0"] = new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")});

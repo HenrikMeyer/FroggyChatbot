@@ -44,10 +44,14 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         {
             var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
+            String actualID = "0";
+            if(users.ContainsKey(activity.From.Id)){
+              actualID = users[activity.From.Id];
+            }
+            log.Info("ACTUAL ID: "+actualID);
             switch (activity.GetActivityType())
             {
-                String actualID = users[activity.From.Id];
-                log.Info("ACTUAL ID: "+actualID);
+
 
                 case ActivityTypes.Message:
 

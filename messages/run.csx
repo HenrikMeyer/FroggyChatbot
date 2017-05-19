@@ -19,7 +19,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-static String actualID = "0";
+static String actualID = "start";
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -51,6 +51,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
 
+                      actualID = questions[actualID].links[i].questionID;
 
                       var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                       var reply1 = activity.CreateReply();
@@ -82,7 +83,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       reply1.Attachments.Add(plAttachment);
 
                       await client1.Conversations.ReplyToActivityAsync(reply1);
-                      actualID = questions[actualID].links[i].questionID;
+
                     }
                     i++;
                   }

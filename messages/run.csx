@@ -10,10 +10,10 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-static Question actualQuestion1 = new Question("Möchtest du Frage 2 hören?", 0, new QuestionLink[]{});
+static Question actualQuestion1 = new Question("Möchtest du Frage 2 hören?", 0, new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)});
 static Question actualQuestion2 = new Question("Möchtest du Frage 1 hören?", 0, new QuestionLink[]{});
-actualQuestion1.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)};
-actualQuestion2.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion1)};
+//actualQuestion1.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)};
+//actualQuestion2.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion1)};
 
 static Question actualQuestion = actualQuestion1;
 

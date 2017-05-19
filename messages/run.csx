@@ -72,10 +72,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                           cardImages.Add(new CardImage(url: questions[actualID].imageURL));
                         }
                       }
-
-                      Image image = Image.FromFile(fileName);
-
-
+                      
                       HeroCard plCard = new HeroCard()
                       {
                         Title = questions[actualID].text,

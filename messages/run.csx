@@ -20,7 +20,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-//static String actualID = "0";
+static String actualID = "0";
 static var users = new Dictionary<String, String>(){};
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
@@ -50,35 +50,35 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                   bool found=false;
                   int i = 0;
-                  while(found==false && i<questions[users[activity.From.Id]].links.Length){
-                    if(questions[users[activity.From.Id]].links[i].text==activity.Text){
+                  while(found==false && i<questions[actualID].links.Length){
+                    if(questions[actualID].links[i].text==activity.Text){
                       found = true;
 
-                      users[activity.From.Id] = questions[users[activity.From.Id]].links[i].questionID;
+                      actualID = questions[actualID].links[i].questionID;
 
 
                       var reply = activity.CreateReply();
                       //reply1.Text = questions[actualID].text;
 
                       List<CardAction> cardButtons = new List<CardAction>();
-                      for(int k=0; k<questions[users[activity.From.Id]].links.Length; k++){
+                      for(int k=0; k<questions[actualID].links.Length; k++){
                         CardAction plButton = new CardAction()
                         {
-                          Value = questions[users[activity.From.Id]].links[k].text,
+                          Value = questions[actualID].links[k].text,
                           Type = "postBack",
-                          Title = questions[users[activity.From.Id]].links[k].text
+                          Title = questions[actualID].links[k].text
                         };
                         cardButtons.Add(plButton);
                       }
                       List<CardImage> cardImages = new List<CardImage>();
-                      for(int k=0; k<questions[users[activity.From.Id]].links.Length; k++){
-                        if(questions[users[activity.From.Id]].imageURL!=null){
-                          cardImages.Add(new CardImage(url: questions[users[activity.From.Id]].imageURL));
+                      for(int k=0; k<questions[actualID].links.Length; k++){
+                        if(questions[actualID].imageURL!=null){
+                          cardImages.Add(new CardImage(url: questions[actualID].imageURL));
                         }
                       }
                       HeroCard plCard = new HeroCard()
                       {
-                        Title = questions[users[activity.From.Id]].text+users[activity.From.Id],
+                        Title = questions[actualID].text+users[activity.From.Id],
                         Images = cardImages,
                         Buttons = cardButtons
                       };
@@ -92,26 +92,15 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
 
                   if(found==false){
-                    if(users.ContainsKey(activity.From.Id)){
-                      users[activity.From.Id]="0";
-                    }
-                    else{
-                      users.Add(activity.From.Id, "0");
-                    }
 
-                    foreach(KeyValuePair<string, string> entry in users)
-                    {
-                      log.Info("USER: "+entry.Key+", "+entry.Value);
-                    }
-                    
                     var reply2 = activity.CreateReply();
                     reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Ich muss noch einiges lernen. Bitte Antworte bis dahin mit ";
-                    for(int x=0; x<questions[users[activity.From.Id]].links.Length; x++){
+                    for(int x=0; x<questions[actualID].links.Length; x++){
                       reply2.Text+="'";
-                      reply2.Text+=questions[users[activity.From.Id]].links[x].text;
+                      reply2.Text+=questions[actualID].links[x].text;
                       reply2.Text+="'";
-                      if(x<questions[users[activity.From.Id]].links.Length-1){
-                        if(x==questions[users[activity.From.Id]].links.Length-2){
+                      if(x<questions[actualID].links.Length-1){
+                        if(x==questions[actualID].links.Length-2){
                           reply2.Text+=" oder ";
                         }
                         else{

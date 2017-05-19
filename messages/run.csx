@@ -59,7 +59,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
-                    if(questions[actualID].links[i].text=="Nein"){
+                    if(questions[actualID].links[i].text=="Ja"){
                       found = true;
                       log.Info("Actual ID: "+actualID);
                       log.Info("questions");

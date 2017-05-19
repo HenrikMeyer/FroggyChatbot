@@ -67,16 +67,19 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       /*await client1.Conversations.ReplyToActivityAsync(reply1);*/
 
                       List<CardAction> cardButtons = new List<CardAction>();
-                      CardAction plButton = new CardAction()
-                      {
-                        Value = "ABC",
-                        Type = "postBack",
-                        Title = "Alphabet"
-                      };
-                      cardButtons.Add(plButton);
+                      for(int k=0; k<questions[actualID].links.Length; k++){
+                        CardAction plButton = new CardAction()
+                        {
+                          Value = questions[actualID].links[k].text,
+                          Type = "postBack",
+                          Title = questions[actualID].links[k].text
+                        };
+                        cardButtons.Add(plButton);
+                      }
+
                       HeroCard plCard = new HeroCard()
                       {
-                        Title = "I'm a hero card",
+                        Title = questions[actualID].text,
                         Subtitle = "Wikipedia Page",
                         //Images = cardImages,
                         Buttons = cardButtons

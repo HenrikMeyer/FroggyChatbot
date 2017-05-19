@@ -38,7 +38,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Ok, ich wünsche Dir noch einen schönen Tag!",
       new QuestionLink[]{
-
+        new QuestionLink("Danke", "0")
       }
     )
   }

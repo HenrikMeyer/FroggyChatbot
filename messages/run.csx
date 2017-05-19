@@ -1,7 +1,7 @@
 #r "Newtonsoft.Json"
 #load "BasicLuisDialog.csx"
 #load "Questions.csx"
-#load "Users.csx"
+
 
 using System;
 using System.Net;
@@ -22,7 +22,7 @@ using System.Drawing;
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
 static String actualID = "0";
 static var users = new Dictionary<String, String>(){};
-  
+
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"Webhook was triggered!");

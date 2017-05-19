@@ -60,9 +60,30 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
                       actualID = questions[actualID].links[i].questionID;
+
                       var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                       var reply1 = activity.CreateReply();
-                      reply1.Text = questions[actualID].text;
+                      //reply1.Text = questions[actualID].text;
+                      /*await client1.Conversations.ReplyToActivityAsync(reply1);*/
+
+                      List<CardAction> cardButtons = new List<CardAction>();
+                      CardAction plButton = new CardAction()
+                      {
+                        Value = "https://en.wikipedia.org",
+                        Type = "openUrl",
+                        Title = "WikiPedia Page"
+                      };
+                      cardButtons.Add(plButton);
+                      HeroCard plCard = new HeroCard()
+                      {
+                        Title = "I'm a hero card",
+                        Subtitle = "Wikipedia Page",
+                        //Images = cardImages,
+                        Buttons = cardButtons
+                      };
+                      Attachment plAttachment = plCard.ToAttachment();
+                      reply1.Attachments.Add(plAttachment);
+
                       await client1.Conversations.ReplyToActivityAsync(reply1);
 
                     }

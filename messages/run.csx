@@ -20,7 +20,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-static String actualID = "0";
+//static String actualID = "0";
 static var users = new Dictionary<String, String>(){};
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
@@ -46,6 +46,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             // one of these will have an interface and process it
             switch (activity.GetActivityType())
             {
+                String actualID = users[activity.From.Id];
+                log.Info("ACTUAL ID: "+actualID);
+
                 case ActivityTypes.Message:
 
                   bool found=false;

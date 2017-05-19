@@ -49,6 +49,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
               actualID = users[activity.From.Id];
             }
             log.Info("ACTUAL ID: "+actualID);
+            log.Info("ACTUAL USER ID: "+activity.From.Id);
             switch (activity.GetActivityType())
             {
 
@@ -60,9 +61,18 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   while(found==false && i<questions[actualID].links.Length){
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
-                      log.Info("###USER ID: "+activity.From.Id);
-                      log.Info("###ACTUALID in User   : "+users[activity.From.Id]);
-                      users[activity.From.Id] = questions[actualID].links[i].questionID;
+                      log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
+                      if(users.ContainsKey(activity.From.Id)){
+                        users[activity.From.Id]="0";
+                      }
+                      else{
+                        users.Add(activity.From.Id+"", "0");
+                      }
+
+                      foreach(KeyValuePair<string, string> entry in users)
+                      {
+                        log.Info("USER: "+entry.Key+", "+entry.Value);
+                      }
 
 
                       var reply = activity.CreateReply();
@@ -125,18 +135,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                  log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
-                  if(users.ContainsKey(activity.From.Id)){
-                    users[activity.From.Id]="0";
-                  }
-                  else{
-                    users.Add(activity.From.Id+"", "0");
-                  }
 
-                  foreach(KeyValuePair<string, string> entry in users)
-                  {
-                    log.Info("USER: "+entry.Key+", "+entry.Value);
-                  }
 
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
@@ -163,17 +162,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     */
                   break;
                 case ActivityTypes.ContactRelationUpdate:
-                  log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
-                  if(users.ContainsKey(activity.From.Id)){
-                    users[activity.From.Id]="0";
-                  }
-                  else{
-                    users.Add(activity.From.Id+"", "0");
-                  }
-                  foreach(KeyValuePair<string, string> entry in users)
-                  {
-                    log.Info("USER : "+entry.Key+", "+entry.Value);
-                  }
+
 
                   var reply4 = activity.CreateReply();
                   reply4.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";

@@ -44,7 +44,15 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   //Question tempQuestion = questionLink.question;
 
                   //actualQuestion = actualQuestion.links[0].question;
+
+                  foreach (KeyValuePair<string, string> kvp in dict)
+                  {
+                    log.Info("Pair: "+kvp.Key+" "+kvp.Value);
+                  }
+
+
                   log.Info("Actual ID: "+actualID);
+                  log.Info("questions");
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
                   reply1.Text = "Willkommen! "+questions[actualID].text;
@@ -89,7 +97,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 public class Question
 {
     public String text;
-    public String id;
     public QuestionLink[] links;
 
     public Question(String text, QuestionLink[] links)

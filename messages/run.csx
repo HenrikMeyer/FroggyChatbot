@@ -56,14 +56,31 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     log.Info("Pair: "+kvp.Key+" "+kvp.Value.text);
                   }
 
+                  bool found=false;
+                  int i = 0;
+                  while(found==false && i<questions[actualID].links.Length){
+                    if(questions[actualID].links[i].text=="Ja"){
+                      found = true;
+                      log.Info("Actual ID: "+actualID);
+                      log.Info("questions");
+                      var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
+                      var reply1 = activity.CreateReply();
+                      reply1.Text = "Willkommen! "+questions[actualID].text;
+                      await client1.Conversations.ReplyToActivityAsync(reply1);
+                      actualID = questions[actualID].links[i].questionID;
+                    }
+                    i++;
+                  }
 
-                  log.Info("Actual ID: "+actualID);
-                  log.Info("questions");
-                  var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
-                  var reply1 = activity.CreateReply();
-                  reply1.Text = "Willkommen! "+questions[actualID].text;
-                  await client1.Conversations.ReplyToActivityAsync(reply1);
-                  actualID = questions[actualID].links[0].questionID;
+                  if(found==false){
+                    var client2 = new ConnectorClient(new Uri(activity.ServiceUrl));
+                    var reply2 = activity.CreateReply();
+                    reply2.Text = "Das habe ich nicht verstanden";
+                    await client2.Conversations.ReplyToActivityAsync(reply2);
+                  }
+
+
+
                   break;
 
                 case ActivityTypes.ConversationUpdate:

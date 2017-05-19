@@ -114,7 +114,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-
+                  actualID = "0";
                   var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";

@@ -4,7 +4,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Start der Konversation",
       new QuestionLink[]{
-        new QuestionLink("OK", "0")
+        new QuestionLink("Hi", "0")
       },
       "https://upload.wikimedia.org/wikipedia/commons/b/bd/Fritzbox.jpg"
     )

@@ -150,7 +150,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   var reply3 = activity.CreateReply();
                   //reply1.Text = questions[actualID].text;
 
-                  List<CardAction> cardButtons = new List<CardAction>();
+                  List<CardAction> cardButtons1 = new List<CardAction>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
                     CardAction plButton = new CardAction()
                     {
@@ -158,22 +158,22 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       Type = "postBack",
                       Title = questions[actualID].links[k].text
                     };
-                    cardButtons.Add(plButton);
+                    cardButtons1.Add(plButton);
                   }
-                  List<CardImage> cardImages = new List<CardImage>();
+                  List<CardImage> cardImages1 = new List<CardImage>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
                     if(questions[actualID].imageURL!=null){
-                      cardImages.Add(new CardImage(url: questions[actualID].imageURL));
+                      cardImages1.Add(new CardImage(url: questions[actualID].imageURL));
                     }
                   }
-                  HeroCard plCard = new HeroCard()
+                  HeroCard plCard1 = new HeroCard()
                   {
                     Title = questions[actualID].text,
-                    Images = cardImages,
-                    Buttons = cardButtons
+                    Images = cardImages1,
+                    Buttons = cardButtons1
                   };
-                  Attachment plAttachment = plCard.ToAttachment();
-                  reply3.Attachments.Add(plAttachment);
+                  Attachment plAttachment1 = plCard1.ToAttachment();
+                  reply3.Attachments.Add(plAttachment1);
 
                   await client.Conversations.ReplyToActivityAsync(reply3);
 

@@ -40,6 +40,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
         if (activity != null)
         {
+            var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
             switch (activity.GetActivityType())
             {
@@ -53,8 +54,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                       actualID = questions[actualID].links[i].questionID;
 
-                      var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
-                      var reply1 = activity.CreateReply();
+
+                      var reply = activity.CreateReply();
                       //reply1.Text = questions[actualID].text;
 
                       List<CardAction> cardButtons = new List<CardAction>();
@@ -82,14 +83,14 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       Attachment plAttachment = plCard.ToAttachment();
                       reply1.Attachments.Add(plAttachment);
 
-                      await client1.Conversations.ReplyToActivityAsync(reply1);
+                      await client.Conversations.ReplyToActivityAsync(reply);
 
                     }
                     i++;
                   }
 
                   if(found==false){
-                    var client2 = new ConnectorClient(new Uri(activity.ServiceUrl));
+
                     var reply2 = activity.CreateReply();
                     reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Ich muss noch einiges lernen. Bitte Antworte bis dahin mit ";
                     for(int x=0; x<questions[actualID].links.Length; x++){
@@ -106,7 +107,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                     }
                     reply2.Text+=".";
-                    await client2.Conversations.ReplyToActivityAsync(reply2);
+                    await client.Conversations.ReplyToActivityAsync(reply2);
                   }
 
 
@@ -114,11 +115,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                  actualID = "0";
-                  var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
+
+                  //users.Add(activity.Recipient.Id, 0);
+
                   var reply3 = activity.CreateReply();
-                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
-                  await client3.Conversations.ReplyToActivityAsync(reply3);
+                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern."+activity.Recipient.Id;
+                  await client.Conversations.ReplyToActivityAsync(reply3);
 
                 /*
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));

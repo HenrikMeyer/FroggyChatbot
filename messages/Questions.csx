@@ -1,15 +1,5 @@
 static var questions = new Dictionary<String, Question>(){
   {
-    "start",
-    new Question(
-      "Start der Konversation",
-      new QuestionLink[]{
-        new QuestionLink("Hi", "0")
-      },
-      "https://upload.wikimedia.org/wikipedia/commons/b/bd/Fritzbox.jpg"
-    )
-  },
-  {
     "0",
     new Question(
       "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.",

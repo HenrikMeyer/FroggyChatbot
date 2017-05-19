@@ -37,7 +37,7 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("OK", "1")
       }
     )
-  }
+  },
   {
     "4",
     new Question(

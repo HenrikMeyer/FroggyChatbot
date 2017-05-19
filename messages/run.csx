@@ -117,6 +117,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
+                /*
                   if(users.ContainsKey(activity.From.Id)){
                     users[activity.From.Id]="0";
                   }
@@ -128,7 +129,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   {
                     log.Info("USER: "+entry.Key+", "+entry.Value);
                   }
-
+                  */
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern. "+users[activity.From.Id];
                   await client.Conversations.ReplyToActivityAsync(reply3);

@@ -45,6 +45,13 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
             String actualID = "0";
+            log.Info("USER:");
+            foreach(KeyValuePair<string, string> entry in users)
+            {
+              log.Info("-> "+entry.Key+", "+entry.Value);
+            }
+            log.Info("USER_END");
+
             if(users.ContainsKey(activity.From.Id+"")){
               log.Info("##CONTAINS KEY!");
               actualID = users[activity.From.Id+""];
@@ -70,11 +77,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         /*
                         users.Add(activity.From.Id+"", users[activity.From.Id+""]=questions[actualID].links[i].questionID);
                         */
-                      }
-
-                      foreach(KeyValuePair<string, string> entry in users)
-                      {
-                        log.Info("USER: "+entry.Key+", "+entry.Value);
                       }
 
 

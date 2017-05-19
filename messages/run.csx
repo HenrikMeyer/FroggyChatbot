@@ -48,7 +48,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   log.Info(actualQuestion.text);
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
-                  reply1.Text = "Willkommen! "+actualQuestion.text+actualQuestion.links.Length;
+                  reply1.Text = "Willkommen! "+actualQuestion.text+actualQuestion1.links.Length;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
                   //actualQuestion = actualQuestion.links[0].question;
                   break;

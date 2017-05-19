@@ -87,7 +87,7 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Nein", "10"),
       }
     )
-  }
+  },
   {
     "10",
     new Question(
@@ -97,13 +97,13 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Nein", "10"),
       }
     )
-  }
+  },
   {
     "11",
     new Question(
       "Lieber Kunde, schön, dass wir beide Ihren Anschluss entstören konnten. Wir wünschen Ihnen weiterhin viel Spaß an unseren Produkten. Falls Sie einen Verbesserungsvorschlag zu dem gerade durchgeführten Vorgehen haben, freuen wir uns über eine Rückmeldung von Ihnen.",
       new QuestionLink[]{
-        new QuestionLink("Danke", "0"),
+        new QuestionLink("Danke", "0")
       }
     )
   }

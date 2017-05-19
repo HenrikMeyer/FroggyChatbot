@@ -88,4 +88,23 @@ static var questions = new Dictionary<String, Question>(){
       }
     )
   }
+  {
+    "10",
+    new Question(
+      "Lieber Kunde, nun haben wir alle benötigten Daten von Ihnen bekommen und werden Ihre Störung durch unsere Spezialisten bearbeiten lassen. Gleich bekommen Sie von uns eine Bearbeitungsnummer.",
+      new QuestionLink[]{
+        new QuestionLink("Ja", "11"),
+        new QuestionLink("Nein", "10"),
+      }
+    )
+  }
+  {
+    "11",
+    new Question(
+      "Lieber Kunde, schön, dass wir beide Ihren Anschluss entstören konnten. Wir wünschen Ihnen weiterhin viel Spaß an unseren Produkten. Falls Sie einen Verbesserungsvorschlag zu dem gerade durchgeführten Vorgehen haben, freuen wir uns über eine Rückmeldung von Ihnen.",
+      new QuestionLink[]{
+        new QuestionLink("Danke", "0"),
+      }
+    )
+  }
 };

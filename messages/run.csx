@@ -142,18 +142,39 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                 case ActivityTypes.ConversationUpdate:
 
-                  if(users.ContainsKey(activity.From.Id+"")){
-                    users[activity.From.Id+""]="0";
-                  }
-                  else{
-
-                    users.Add(activity.From.Id+"", "0");
-
-                  }
-                  actualID="0";
-
+                /*
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
+                  await client.Conversations.ReplyToActivityAsync(reply3);
+                  */
+                  var reply3 = activity.CreateReply();
+                  //reply1.Text = questions[actualID].text;
+
+                  List<CardAction> cardButtons = new List<CardAction>();
+                  for(int k=0; k<questions[actualID].links.Length; k++){
+                    CardAction plButton = new CardAction()
+                    {
+                      Value = questions[actualID].links[k].text,
+                      Type = "postBack",
+                      Title = questions[actualID].links[k].text
+                    };
+                    cardButtons.Add(plButton);
+                  }
+                  List<CardImage> cardImages = new List<CardImage>();
+                  for(int k=0; k<questions[actualID].links.Length; k++){
+                    if(questions[actualID].imageURL!=null){
+                      cardImages.Add(new CardImage(url: questions[actualID].imageURL));
+                    }
+                  }
+                  HeroCard plCard = new HeroCard()
+                  {
+                    Title = questions[actualID].text,
+                    Images = cardImages,
+                    Buttons = cardButtons
+                  };
+                  Attachment plAttachment = plCard.ToAttachment();
+                  reply3.Attachments.Add(plAttachment);
+
                   await client.Conversations.ReplyToActivityAsync(reply3);
 
                 /*

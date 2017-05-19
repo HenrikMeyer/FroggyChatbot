@@ -4,7 +4,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.",
       new QuestionLink[]{
-        new QuestionLink("Numer XYZ", "1")
+        new QuestionLink("Nummer XYZ", "1")
       }
     )
   },
@@ -93,8 +93,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Lieber Kunde, nun haben wir alle benötigten Daten von Ihnen bekommen und werden Ihre Störung durch unsere Spezialisten bearbeiten lassen. Gleich bekommen Sie von uns eine Bearbeitungsnummer.",
       new QuestionLink[]{
-        new QuestionLink("Ja", "11"),
-        new QuestionLink("Nein", "10"),
+        new QuestionLink("Danke", "0")
       }
     )
   },

@@ -69,9 +69,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       List<CardAction> cardButtons = new List<CardAction>();
                       CardAction plButton = new CardAction()
                       {
-                        Value = "https://en.wikipedia.org",
-                        Type = "openUrl",
-                        Title = "WikiPedia Page"
+                        Value = "ABC",
+                        Type = "postBack",
+                        Title = "Alphabet"
                       };
                       cardButtons.Add(plButton);
                       HeroCard plCard = new HeroCard()

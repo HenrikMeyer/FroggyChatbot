@@ -74,9 +74,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         users[activity.From.Id+""]=questions[actualID].links[i].questionID;
                       }
                       else{
-                        /*
-                        users.Add(activity.From.Id+"", users[activity.From.Id+""]=questions[actualID].links[i].questionID);
-                        */
+
+                        users.Add(activity.From.Id+"", questions[actualID].links[i].questionID);
+
                       }
 
 

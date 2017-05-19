@@ -1,6 +1,7 @@
 #r "Newtonsoft.Json"
 #load "BasicLuisDialog.csx"
 #load "Questions.csx"
+#load "Users.csx"
 
 using System;
 using System.Net;
@@ -116,10 +117,10 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                 case ActivityTypes.ConversationUpdate:
 
-                  //users.Add(activity.Recipient.Id, 0);
+                  users.Add(activity.From.Id, "0");
 
                   var reply3 = activity.CreateReply();
-                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern. "+activity.From;
+                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern. "+users[activity.From.Id];
                   await client.Conversations.ReplyToActivityAsync(reply3);
 
                 /*

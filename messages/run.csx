@@ -126,7 +126,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                   foreach(KeyValuePair<string, string> entry in users)
                   {
-                    log.Info("USER: "+entry.Value);
+                    log.Info("USER: "+enty.Key+", "+entry.Value);
                   }
 
                   var reply3 = activity.CreateReply();

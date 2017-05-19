@@ -60,8 +60,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   while(found==false && i<questions[actualID].links.Length){
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
-                      log.INFO("###USER ID: "+activity.From.Id]);
-                      log.INFO("###ACTUALID in User   : "+users[activity.From.Id]);
+                      log.Info("###USER ID: "+activity.From.Id]);
+                      log.Info("###ACTUALID in User   : "+users[activity.From.Id]);
                       users[activity.From.Id] = questions[actualID].links[i].questionID;
 
 

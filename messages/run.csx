@@ -43,16 +43,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  //QuestionLink[] tempQuestionLinks = actualQuestion.links;
-                  //QuestionLink questionLink = tempQuestionLinks[0];
-                  //Question tempQuestion = questionLink.question;
-
-                  //actualQuestion = actualQuestion.links[0].question;
-
-                  foreach (KeyValuePair<string, Question> kvp in questions)
-                  {
-                    log.Info("Pair: "+kvp.Key+" "+kvp.Value.text);
-                  }
 
                   bool found=false;
                   int i = 0;
@@ -64,7 +54,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                       var reply1 = activity.CreateReply();
                       //reply1.Text = questions[actualID].text;
-                      /*await client1.Conversations.ReplyToActivityAsync(reply1);*/
 
                       List<CardAction> cardButtons = new List<CardAction>();
                       for(int k=0; k<questions[actualID].links.Length; k++){
@@ -76,11 +65,19 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         };
                         cardButtons.Add(plButton);
                       }
+                      List<CardImage> cardImages = new List<CardImage>();
+                      for(int k=0; k<questions[actualID].links.Length; k++){
+                        if(questions[actualID].imageURL!=null){
+                          cardImages.Add(new CardImage(url: questions[actualID].imageURL));
+                        }
+                      }
+
+                      Image image = Image.FromFile(fileName);
+
 
                       HeroCard plCard = new HeroCard()
                       {
                         Title = questions[actualID].text,
-                        Subtitle = "Wikipedia Page",
                         //Images = cardImages,
                         Buttons = cardButtons
                       };
@@ -162,11 +159,20 @@ public class Question
 {
     public String text;           //Question Text
     public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question
+    public String imageURL;
+
+    public Question(String text, QuestionLink[] links, String imageURL)
+    {
+      this.text = text;
+      this.links = links;
+      this.imageURL = imageURL;
+    }
 
     public Question(String text, QuestionLink[] links)
     {
       this.text = text;
       this.links = links;
+      this.imageURL = null;
     }
 }
 

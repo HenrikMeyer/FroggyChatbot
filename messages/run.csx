@@ -46,7 +46,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                 case ActivityTypes.Message:
                   if(activity.Text=="reset"){
                     activity.Text="reset";
-                    actualID=0;
+                    actualID="0";
                   }
                   bool found=false;
                   int i = 0;

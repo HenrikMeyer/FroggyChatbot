@@ -170,7 +170,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   var reply4 = activity.CreateReply();
                   reply4.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
                   await client.Conversations.ReplyToActivityAsync(reply4);
-
+                  break;
                 case ActivityTypes.Typing:
                 case ActivityTypes.DeleteUserData:
                 case ActivityTypes.Ping:

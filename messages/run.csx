@@ -75,11 +75,15 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   if(found==false){
                     var client2 = new ConnectorClient(new Uri(activity.ServiceUrl));
                     var reply2 = activity.CreateReply();
-                    reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Bitte Antworte mit";
+                    reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Bitte Antworte mit ";
                     for(int x=0; x<questions[actualID].links.Length; x++){
-                      reply2.Text+=questions[actualID].links[x].text;
                       if(x<questions[actualID].links.Length-1){
-                        reply2.Text+=", ";
+                        if(x==questions[actualID].links.Length-2){
+                          reply2.Text+="oder ";
+                        }
+                        else{
+                          reply2.Text+=", ";
+                        }
                       }
                     }
                     reply2.Text+=".";

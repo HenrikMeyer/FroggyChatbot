@@ -143,11 +143,11 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                 case ActivityTypes.ConversationUpdate:
 
                   if(users.ContainsKey(activity.From.Id+"")){
-                    users[activity.From.Id+""]=questions[actualID].links[i].questionID;
+                    users[activity.From.Id+""]="0";
                   }
                   else{
 
-                    users.Add(activity.From.Id+"", questions[actualID].links[i].questionID);
+                    users.Add(activity.From.Id+"", "0");
 
                   }
                   actualID="0";

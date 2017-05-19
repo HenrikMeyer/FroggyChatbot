@@ -106,7 +106,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       reply2.Text+=questions[actualID].links[x].text;
                       if(x<questions[actualID].links.Length-1){
                         if(x==questions[actualID].links.Length-2){
-                          reply2.Text+="oder ";
+                          reply2.Text+=" oder ";
                         }
                         else{
                           reply2.Text+=", ";
@@ -122,7 +122,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                
+
                   var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply3 = activity.CreateReply();
                   reply3.Text = questions[actualID].text;

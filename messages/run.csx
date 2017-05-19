@@ -76,7 +76,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                       HeroCard plCard = new HeroCard()
                       {
-                        Title = questions[actualID].text+activity.From,
+                        Title = questions[actualID].text+activity.From.Id,
                         Images = cardImages,
                         Buttons = cardButtons
                       };

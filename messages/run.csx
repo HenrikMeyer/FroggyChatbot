@@ -78,6 +78,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         users.Add(activity.From.Id+"", questions[actualID].links[i].questionID);
 
                       }
+                      actualID=questions[actualID].links[i].questionID;
 
 
                       var reply = activity.CreateReply();

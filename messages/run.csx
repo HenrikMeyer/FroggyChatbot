@@ -125,12 +125,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-
+                  log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
                   if(users.ContainsKey(activity.From.Id)){
                     users[activity.From.Id]="0";
                   }
                   else{
-                    users.Add(activity.From.Id, "0");
+                    users.Add(activity.From.Id+"", "0");
                   }
 
                   foreach(KeyValuePair<string, string> entry in users)
@@ -163,16 +163,16 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     */
                   break;
                 case ActivityTypes.ContactRelationUpdate:
+                  log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
                   if(users.ContainsKey(activity.From.Id)){
                     users[activity.From.Id]="0";
                   }
                   else{
-                    users.Add(activity.From.Id, "0");
+                    users.Add(activity.From.Id+"", "0");
                   }
-
                   foreach(KeyValuePair<string, string> entry in users)
                   {
-                    log.Info("USER: "+entry.Key+", "+entry.Value);
+                    log.Info("USER : "+entry.Key+", "+entry.Value);
                   }
 
                   var reply4 = activity.CreateReply();

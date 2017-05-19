@@ -122,11 +122,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
+                /*
                   var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply3 = activity.CreateReply();
                   reply3.Text = questions[actualID].text;
                   await client3.Conversations.ReplyToActivityAsync(reply3);
-
+                  */
                 /*
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                     IConversationUpdateActivity update = activity;
@@ -162,8 +163,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 public class Question
 {
-    public String text;
-    public QuestionLink[] links;
+    public String text;           //Question Text
+    public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question
 
     public Question(String text, QuestionLink[] links)
     {
@@ -174,8 +175,8 @@ public class Question
 
 public class QuestionLink
 {
-    public String text;
-    public String questionID;
+    public String text;       //Answer Text
+    public String questionID; //ID of next Question
 
     public QuestionLink(String text, String questionID)
     {

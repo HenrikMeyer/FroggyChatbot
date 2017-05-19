@@ -49,7 +49,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   var reply1 = activity.CreateReply();
                   reply1.Text = "Willkommen! "+questions[actualID].text;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
-                  actualID = questions[actualID].links[0].id;
+                  actualID = questions[actualID].links[0].questionID;
                   break;
 
                 case ActivityTypes.ConversationUpdate:
@@ -102,11 +102,11 @@ public class Question
 public class QuestionLink
 {
     public String text;
-    public String id;
+    public String questionID;
 
-    public QuestionLink(String text, Question question)
+    public QuestionLink(String text, String questionID)
     {
       this.text = text;
-      this.question = question;
+      this.questionID = questionID;
     }
 }

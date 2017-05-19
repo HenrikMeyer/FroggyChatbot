@@ -62,7 +62,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
                       log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
-                      if(users.ContainsKey(activity.From.Id)){
+                      if(users.ContainsKey(activity.From.Id+"")){
                         users[activity.From.Id]=questions[actualID].links[i].questionID;
                       }
                       else{

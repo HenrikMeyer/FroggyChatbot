@@ -44,10 +44,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  if(activity.Text=="reset"){
-                    activity.Text="reset";
-                    actualID="0";
-                  }
+
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
@@ -78,7 +75,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       HeroCard plCard = new HeroCard()
                       {
                         Title = questions[actualID].text,
-                        //Images = cardImages,
+                        Images = cardImages,
                         Buttons = cardButtons
                       };
                       Attachment plAttachment = plCard.ToAttachment();

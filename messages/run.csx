@@ -19,7 +19,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-static String actualID = "start";
+static String actualID = "0";
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -114,12 +114,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                /*
+
                   var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply3 = activity.CreateReply();
-                  reply3.Text = questions[actualID].text;
+                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
                   await client3.Conversations.ReplyToActivityAsync(reply3);
-                  */
+
                 /*
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                     IConversationUpdateActivity update = activity;

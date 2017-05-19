@@ -19,7 +19,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-static String actualID = "0";
+static String actualID = "null";
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -44,7 +44,10 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-
+                  if(activity.Text=="reset"){
+                    activity.Text="reset";
+                    actualID=0;
+                  }
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
@@ -72,7 +75,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                           cardImages.Add(new CardImage(url: questions[actualID].imageURL));
                         }
                       }
-
                       HeroCard plCard = new HeroCard()
                       {
                         Title = questions[actualID].text,
@@ -83,7 +85,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       reply1.Attachments.Add(plAttachment);
 
                       await client1.Conversations.ReplyToActivityAsync(reply1);
-
                     }
                     i++;
                   }

@@ -45,7 +45,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                   //actualQuestion = actualQuestion.links[0].question;
 
-                  foreach (KeyValuePair<string, string> kvp in dict)
+                  foreach (KeyValuePair<string, string> kvp in questions)
                   {
                     log.Info("Pair: "+kvp.Key+" "+kvp.Value);
                   }

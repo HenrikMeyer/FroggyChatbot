@@ -124,7 +124,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     users.Add(activity.From.Id, "0");
                   }
 
-                  foreach(KeyValuePair<string, string> entry in myDic)
+                  foreach(KeyValuePair<string, string> entry in users)
                   {
                     log.Info("USER: "+entry.Value);
                   }

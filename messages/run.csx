@@ -10,12 +10,11 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-static Question actualQuestion1 = new Question("Möchtest du Frage 2 hören?", 0, new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)});
-static Question actualQuestion2 = new Question("Möchtest du Frage 1 hören?", 0, new QuestionLink[]{});
-//actualQuestion1.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion2)};
-//actualQuestion2.links = new QuestionLink[]{new QuestionLink("Ja", actualQuestion1)};
+static var questions = new Dictionary<String, Question>();
+questions["0"] = new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")});
+questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 
-static Question actualQuestion = actualQuestion1;
+static String actualID = "0";
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -48,9 +47,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   log.Info(actualQuestion.text);
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
-                  reply1.Text = "Willkommen! "+actualQuestion.text+actualQuestion1.links.Length;
+                  reply1.Text = "Willkommen! "+questions[actualID].text;
                   await client1.Conversations.ReplyToActivityAsync(reply1);
-                  //actualQuestion = actualQuestion.links[0].question;
+                  actualID = questions[actualID].links[0].id;
                   break;
 
                 case ActivityTypes.ConversationUpdate:
@@ -90,13 +89,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 public class Question
 {
     public String text;
-    public int id;
+    public String id;
     public QuestionLink[] links;
 
-    public Question(String text, int id, QuestionLink[] links)
+    public Question(String text, QuestionLink[] links)
     {
       this.text = text;
-      this.id = id;
       this.links = links;
     }
 }
@@ -104,17 +102,11 @@ public class Question
 public class QuestionLink
 {
     public String text;
-    public Question question;
+    public String id;
 
     public QuestionLink(String text, Question question)
     {
       this.text = text;
       this.question = question;
     }
-}
-
-public class Linker{
-
-  public Question[] questions;
-
 }

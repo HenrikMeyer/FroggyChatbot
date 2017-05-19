@@ -78,7 +78,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                       HeroCard plCard = new HeroCard()
                       {
-                        Title = questions[actualID].text+users[activity.From.Id],
+                        Title = questions[actualID].text,
                         Images = cardImages,
                         Buttons = cardButtons
                       };
@@ -131,7 +131,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
                   */
                   var reply3 = activity.CreateReply();
-                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern. "+users[activity.From.Id];
+                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
                   await client.Conversations.ReplyToActivityAsync(reply3);
 
                 /*

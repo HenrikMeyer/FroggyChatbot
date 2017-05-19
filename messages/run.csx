@@ -12,6 +12,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
 using System.Collections.Generic;
+using System.Drawing.Image;
 
 
 //questions["0"] = new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")});

@@ -12,7 +12,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
 using System.Collections.Generic;
-using System.Drawing.Image;
+using System.Drawing;
 
 
 //questions["0"] = new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")});
@@ -72,7 +72,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                           cardImages.Add(new CardImage(url: questions[actualID].imageURL));
                         }
                       }
-                      
+
                       HeroCard plCard = new HeroCard()
                       {
                         Title = questions[actualID].text,

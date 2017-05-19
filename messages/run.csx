@@ -114,12 +114,12 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-
+                /*
                   var client3 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply3 = activity.CreateReply();
                   reply3.Text = questions[actualID].text;
                   await client3.Conversations.ReplyToActivityAsync(reply3);
-
+                  */
                 /*
                     var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                     IConversationUpdateActivity update = activity;

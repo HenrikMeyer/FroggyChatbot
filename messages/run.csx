@@ -19,7 +19,7 @@ using System.Drawing;
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
 //questions.Add("1", new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")}));
-static String actualID = "null";
+static String actualID = "0";
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {

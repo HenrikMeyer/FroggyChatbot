@@ -77,7 +77,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     var reply2 = activity.CreateReply();
                     reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Bitte Antworte mit";
                     for(int x=0; x<questions[actualID].links.Length; x++){
-                      reply2.Text+=questions[actualID].links[x];
+                      reply2.Text+=questions[actualID].links[x].text;
                       if(x<questions[actualID].links.Length-1){
                         reply2.Text+=", ";
                       }

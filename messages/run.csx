@@ -44,7 +44,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   //Question tempQuestion = questionLink.question;
 
                   //actualQuestion = actualQuestion.links[0].question;
-                  log.Info(actualQuestion.text);
+                  log.Info("Actual ID: "+actualID);
                   var client1 = new ConnectorClient(new Uri(activity.ServiceUrl));
                   var reply1 = activity.CreateReply();
                   reply1.Text = "Willkommen! "+questions[actualID].text;

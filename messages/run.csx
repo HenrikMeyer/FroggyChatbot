@@ -92,7 +92,18 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
 
                   if(found==false){
+                    if(users.ContainsKey(activity.From.Id)){
+                      users[activity.From.Id]="0";
+                    }
+                    else{
+                      users.Add(activity.From.Id, "0");
+                    }
 
+                    foreach(KeyValuePair<string, string> entry in users)
+                    {
+                      log.Info("USER: "+entry.Key+", "+entry.Value);
+                    }
+                    
                     var reply2 = activity.CreateReply();
                     reply2.Text = "Tut mir leid, das habe ich nicht verstanden. Ich muss noch einiges lernen. Bitte Antworte bis dahin mit ";
                     for(int x=0; x<questions[users[activity.From.Id]].links.Length; x++){

@@ -63,7 +63,7 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Nein", "8"),
       },
       new String[]{
-        "http://qfrog.de/chatbot/FRITZ%21Box_Fon1_Kabelgebunden_900px.jpg";
+        "http://qfrog.de/chatbot/FRITZ%21Box_Fon1_Kabelgebunden_900px.jpg"
       }
     )
   },
@@ -76,7 +76,7 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Nein", "8"),
       },
       new String[]{
-        "https://upload.wikimedia.org/wikipedia/commons/0/01/FRITZFon_C3_2.jpg";
+        "https://upload.wikimedia.org/wikipedia/commons/0/01/FRITZFon_C3_2.jpg"
       }
     )
   },

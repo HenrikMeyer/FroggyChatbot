@@ -6,7 +6,9 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("Nummer XYZ", "1")
       },
-      "http://qfrog.de/chatbot/FRITZ%21Box_Analog_Kabelgebunden_900px.jpg"
+      new String[]{
+        "https://www.ewe.com/assets/images/ewe-logo.svg"
+      }
     )
   },
   {
@@ -46,6 +48,9 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("Ja", "6"),
         new QuestionLink("Nein", "7"),
+      },
+      new String[]{
+        "http://qfrog.de/chatbot/FRITZ%21Box_Analog_Schnurlos_900px.jpg"
       }
     )
   },
@@ -57,6 +62,9 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Ja", "10"),
         new QuestionLink("Nein", "8"),
       }
+      new String[]{
+        "http://qfrog.de/chatbot/FRITZ%21Box_Fon1_Kabelgebunden_900px.jpg";
+      }
     )
   },
   {
@@ -67,6 +75,9 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Ja", "10"),
         new QuestionLink("Nein", "8"),
       }
+      new String[]{
+        "https://upload.wikimedia.org/wikipedia/commons/0/01/FRITZFon_C3_2.jpg";
+      }
     )
   },
   {
@@ -76,6 +87,10 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("Phoneanschluss", "10"),
         new QuestionLink("S0 Port", "8"),
+      }
+      new String[]{
+        "http://qfrog.de/chatbot/FRITZ%21Box_Fon1_Schnurlos_900px.jpg",
+        "http://qfrog.de/chatbot/FRITZ%21Box_S0_ISDN-Schnurlos_900px.jpg"
       }
     )
   },
@@ -94,7 +109,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Lieber Kunde, nun haben wir alle benötigten Daten von Ihnen bekommen und werden Ihre Störung durch unsere Spezialisten bearbeiten lassen. Gleich bekommen Sie von uns eine Bearbeitungsnummer.",
       new QuestionLink[]{
-        new QuestionLink("Danke", "0")
+        new QuestionLink("OK", "0")
       }
     )
   },
@@ -103,7 +118,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Lieber Kunde, schön, dass wir beide Ihren Anschluss entstören konnten. Wir wünschen Ihnen weiterhin viel Spaß an unseren Produkten. Falls Sie einen Verbesserungsvorschlag zu dem gerade durchgeführten Vorgehen haben, freuen wir uns über eine Rückmeldung von Ihnen.",
       new QuestionLink[]{
-        new QuestionLink("Danke", "0")
+        new QuestionLink("OK", "0")
       }
     )
   }

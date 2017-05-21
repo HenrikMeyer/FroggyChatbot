@@ -96,8 +96,10 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                       List<CardImage> cardImages = new List<CardImage>();
                       for(int k=0; k<questions[actualID].links.Length; k++){
-                        if(questions[actualID].imageURL!=null){
-                          cardImages.Add(new CardImage(url: questions[actualID].imageURL));
+                        if(questions[actualID].imageURLs!=null){
+                          for(int u=0; u<questions[actualID].imageURLs.Length; u++){
+                            cardImages.Add(new CardImage(url: questions[actualID].imageURLs[u]));
+                          }
                         }
                       }
                       HeroCard plCard = new HeroCard()
@@ -162,8 +164,10 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
                   List<CardImage> cardImages1 = new List<CardImage>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
-                    if(questions[actualID].imageURL!=null){
-                      cardImages1.Add(new CardImage(url: questions[actualID].imageURL));
+                    if(questions[actualID].imageURLs!=null){
+                      for(int u=0; u<uestions[actualID].imageURLs.Length; u++){
+                        cardImages1.Add(new CardImage(url: questions[actualID].imageURLs[u]));
+                      }
                     }
                   }
                   HeroCard plCard1 = new HeroCard()
@@ -220,20 +224,20 @@ public class Question
 {
     public String text;           //Question Text
     public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question
-    public String imageURL;
+    public String[] imageURLs;
 
-    public Question(String text, QuestionLink[] links, String imageURL)
+    public Question(String text, QuestionLink[] links, String[] imageURLs)
     {
       this.text = text;
       this.links = links;
-      this.imageURL = imageURL;
+      this.imageURLs = imageURLs;
     }
 
     public Question(String text, QuestionLink[] links)
     {
       this.text = text;
       this.links = links;
-      this.imageURL = null;
+      this.imageURLs = null;
     }
 }
 

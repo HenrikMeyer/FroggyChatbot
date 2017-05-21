@@ -6,7 +6,7 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("Nummer XYZ", "1")
       },
-      "https://upload.wikimedia.org/wikipedia/commons/b/bd/Fritzbox.jpg"
+      "http://qfrog.de/chatbot/FRITZ%21Box_Analog_Kabelgebunden_900px.jpg"
     )
   },
   {

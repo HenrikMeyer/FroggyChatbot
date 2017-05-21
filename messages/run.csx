@@ -165,7 +165,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   List<CardImage> cardImages1 = new List<CardImage>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
                     if(questions[actualID].imageURLs!=null){
-                      for(int u=0; u<uestions[actualID].imageURLs.Length; u++){
+                      for(int u=0; u<questions[actualID].imageURLs.Length; u++){
                         cardImages1.Add(new CardImage(url: questions[actualID].imageURLs[u]));
                       }
                     }

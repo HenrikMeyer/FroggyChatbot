@@ -90,7 +90,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         {
                           Value = questions[actualID].links[k].text,
                           Type = "postBack",
-                          Subtitle = questions[actualID].links[k].text
+                          Title = questions[actualID].links[k].text
                         };
                         cardButtons.Add(plButton);
                       }
@@ -158,7 +158,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     {
                       Value = questions[actualID].links[k].text,
                       Type = "postBack",
-                      Subtitle = questions[actualID].links[k].text
+                      Title = questions[actualID].links[k].text
                     };
                     cardButtons1.Add(plButton);
                   }

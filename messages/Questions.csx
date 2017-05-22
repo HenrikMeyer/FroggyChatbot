@@ -4,7 +4,7 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.",
       new QuestionLink[]{
-        new QuestionLink("Nummer XYZ", "1")
+        new QuestionLink("Beispielnummer", "1")
       },
       new String[]{
         "https://www.ewe.com/assets/images/ewe-logo.svg"

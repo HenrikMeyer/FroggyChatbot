@@ -150,7 +150,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   await client.Conversations.ReplyToActivityAsync(reply3);
                   */
                   var reply3 = activity.CreateReply();
-                  reply.Text = questions[actualID].text;
+                  reply3.Text = questions[actualID].text;
 
                   List<CardAction> cardButtons1 = new List<CardAction>();
                   for(int k=0; k<questions[actualID].links.Length; k++){

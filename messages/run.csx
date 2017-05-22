@@ -228,7 +228,7 @@ public class Question
 
     public Question(String text, QuestionLink[] links, String[] imageURLs)
     {
-      this.text = text;
+      this.text = "<html><head></head><body>"+text+"</body></html>";
       this.links = links;
       this.imageURLs = imageURLs;
     }

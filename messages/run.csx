@@ -82,7 +82,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 
                       var reply = activity.CreateReply();
-                      //reply1.Text = questions[actualID].text;
+                      reply.Text = questions[actualID].text;
 
                       List<CardAction> cardButtons = new List<CardAction>();
                       for(int k=0; k<questions[actualID].links.Length; k++){
@@ -104,7 +104,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                       HeroCard plCard = new HeroCard()
                       {
-                        Subtitle = questions[actualID].text,
+                        //Subtitle = questions[actualID].text,
                         Images = cardImages,
                         Buttons = cardButtons
                       };
@@ -150,7 +150,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   await client.Conversations.ReplyToActivityAsync(reply3);
                   */
                   var reply3 = activity.CreateReply();
-                  //reply1.Text = questions[actualID].text;
+                  reply.Text = questions[actualID].text;
 
                   List<CardAction> cardButtons1 = new List<CardAction>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
@@ -172,7 +172,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
                   HeroCard plCard1 = new HeroCard()
                   {
-                    Subtitle = questions[actualID].text,
+                    //Subtitle = questions[actualID].text,
                     Images = cardImages1,
                     Buttons = cardButtons1
                   };
@@ -228,7 +228,7 @@ public class Question
 
     public Question(String text, QuestionLink[] links, String[] imageURLs)
     {
-      this.text = "<html><head></head><body>"+text+"</body></html>";
+      this.text = text;
       this.links = links;
       this.imageURLs = imageURLs;
     }

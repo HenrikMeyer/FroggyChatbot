@@ -90,7 +90,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         {
                           Value = questions[actualID].links[k].text,
                           Type = "postBack",
-                          Title = questions[actualID].links[k].text
+                          Subtitle = questions[actualID].links[k].text
                         };
                         cardButtons.Add(plButton);
                       }
@@ -104,7 +104,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       }
                       HeroCard plCard = new HeroCard()
                       {
-                        Title = questions[actualID].text,
+                        Subtitle = questions[actualID].text,
                         Images = cardImages,
                         Buttons = cardButtons
                       };
@@ -158,7 +158,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     {
                       Value = questions[actualID].links[k].text,
                       Type = "postBack",
-                      Title = questions[actualID].links[k].text
+                      Subtitle = questions[actualID].links[k].text
                     };
                     cardButtons1.Add(plButton);
                   }
@@ -172,7 +172,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   }
                   HeroCard plCard1 = new HeroCard()
                   {
-                    Title = questions[actualID].text,
+                    Subtitle = questions[actualID].text,
                     Images = cardImages1,
                     Buttons = cardButtons1
                   };

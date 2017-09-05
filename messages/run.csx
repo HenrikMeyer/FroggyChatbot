@@ -52,7 +52,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             log.Info("3) GENERATE ACTUAL QUESTION ID (0)");
             String actualID = "0";
             if(users.ContainsKey(activity.From.Id+"")){
-              log.Info($"4) USER ALREADY KNOWN. SET ACTUAL QUESTUON TO {users[activity.From.Id}");
+              log.Info($"4) USER ALREADY KNOWN. SET ACTUAL QUESTUON TO {users[activity.From.Id]}");
               actualID = users[activity.From.Id+""];
             }
             log.Info("4) ACTUAL QUESTION ID: "+actualID);

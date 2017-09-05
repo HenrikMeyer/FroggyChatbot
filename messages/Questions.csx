@@ -20,7 +20,7 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Blau", "0"),
         new QuestionLink("blau", "0")
       },
-      true
+      false
     )
   },
   {
@@ -30,7 +30,7 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("OK", "0")
       },
-      true
+      false
     )
   }
 };

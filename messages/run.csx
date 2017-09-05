@@ -241,6 +241,7 @@ public class Question
     {
       this.text = text;
       this.links = links;
+      this.showLinks = showLinks;
       this.imageURLs = null;
     }
 }

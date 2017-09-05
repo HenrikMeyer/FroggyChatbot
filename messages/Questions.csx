@@ -51,7 +51,7 @@ static var questions = new Dictionary<String, Question>(){
       new QuestionLink[]{
         new QuestionLink("Rot", "3"),
         new QuestionLink("Gelb", "3"),
-        new QuestionLink("Grün", "3"),
+        new QuestionLink("Grün", "3")
 
       },
       true
@@ -62,7 +62,9 @@ static var questions = new Dictionary<String, Question>(){
     new Question(
       "Eigentlich ist der Himmel blau, aber du bist anscheinend sehr kreativ! Was ist deine Lieblingsfarbe?",
       new QuestionLink[]{
-        new QuestionLink("Zum Anfang", "0")
+        new QuestionLink("Rot", "3"),
+        new QuestionLink("Gelb", "3"),
+        new QuestionLink("Grün", "3")
       },
       true
     )

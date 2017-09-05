@@ -83,16 +83,17 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                       var reply = activity.CreateReply();
                       reply.Text = questions[actualID].text;
-
-                      List<CardAction> cardButtons = new List<CardAction>();
-                      for(int k=0; k<questions[actualID].links.Length; k++){
-                        CardAction plButton = new CardAction()
-                        {
-                          Value = questions[actualID].links[k].text,
-                          Type = "postBack",
-                          Title = questions[actualID].links[k].text
-                        };
-                        cardButtons.Add(plButton);
+                      if(questions[actualID].showLinks==true){
+                        List<CardAction> cardButtons = new List<CardAction>();
+                        for(int k=0; k<questions[actualID].links.Length; k++){
+                          CardAction plButton = new CardAction()
+                          {
+                            Value = questions[actualID].links[k].text,
+                            Type = "postBack",
+                            Title = questions[actualID].links[k].text
+                          };
+                          cardButtons.Add(plButton);
+                        }
                       }
                       List<CardImage> cardImages = new List<CardImage>();
                       for(int k=0; k<questions[actualID].links.Length; k++){
@@ -224,17 +225,19 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 public class Question
 {
     public String text;           //Question Text
-    public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question
+    public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question#
+    public bool showLinks;
     public String[] imageURLs;
 
-    public Question(String text, QuestionLink[] links, String[] imageURLs)
+    public Question(String text, QuestionLink[] links, bool showLinks, String[] imageURLs)
     {
       this.text = text;
       this.links = links;
+      this.showLinks = showLinks;
       this.imageURLs = imageURLs;
     }
 
-    public Question(String text, QuestionLink[] links)
+    public Question(String text, QuestionLink[] links, bool showLinks)
     {
       this.text = text;
       this.links = links;

@@ -8,7 +8,8 @@ static var questions = new Dictionary<String, Question>(){
         new QuestionLink("Hallo", "1"),
         new QuestionLink("Guten Tag", "1"),
         new QuestionLink("Moin", "1")
-      }
+      },
+      true
     )
   },
   {
@@ -17,7 +18,8 @@ static var questions = new Dictionary<String, Question>(){
       "Nett dich kennen zu lernen.",
       new QuestionLink[]{
         new QuestionLink("OK", "0")
-      }
+      },
+      true
     )
   }
 };

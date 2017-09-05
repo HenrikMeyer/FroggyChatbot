@@ -44,7 +44,6 @@ static var questions = new Dictionary<String, Question>(){
       true
     )
   },
-  ,
   {
     "4",
     new Question(
@@ -57,7 +56,7 @@ static var questions = new Dictionary<String, Question>(){
       },
       true
     )
-  }
+  },
   {
     "10",
     new Question(

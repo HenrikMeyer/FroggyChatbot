@@ -44,7 +44,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         {
             var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
-            String actualID = "START";
+            String actualID = "0";
             log.Info("USER:");
             foreach(KeyValuePair<string, string> entry in users)
             {
@@ -144,13 +144,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                 case ActivityTypes.ConversationUpdate:
 
                 log.Info($"ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {actualID})");
-                if(actualID=="START"){
-                  actualID = "0";
-                /*
-                  var reply3 = activity.CreateReply();
-                  reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
-                  await client.Conversations.ReplyToActivityAsync(reply3);
-                  */
+                  
+
                   var reply3 = activity.CreateReply();
                   reply3.Text = questions[actualID].text;
 

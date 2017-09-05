@@ -226,10 +226,10 @@ public class Question
 {
     public String text;           //Question Text
     public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question#
-    public Bool showLinks;
+    public bool showLinks;
     public String[] imageURLs;
 
-    public Question(String text, QuestionLink[] links, Bool showLinks, String[] imageURLs)
+    public Question(String text, QuestionLink[] links, bool showLinks, String[] imageURLs)
     {
       this.text = text;
       this.links = links;
@@ -237,7 +237,7 @@ public class Question
       this.imageURLs = imageURLs;
     }
 
-    public Question(String text, QuestionLink[] links, Bool showLinks)
+    public Question(String text, QuestionLink[] links, bool showLinks)
     {
       this.text = text;
       this.links = links;

@@ -83,8 +83,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                       var reply = activity.CreateReply();
                       reply.Text = questions[actualID].text;
+                      List<CardAction> cardButtons = new List<CardAction>();
                       if(questions[actualID].showLinks==true){
-                        List<CardAction> cardButtons = new List<CardAction>();
                         for(int k=0; k<questions[actualID].links.Length; k++){
                           CardAction plButton = new CardAction()
                           {

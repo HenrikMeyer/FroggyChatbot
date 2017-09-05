@@ -60,10 +60,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             log.Info("ACTUAL USER ID: "+activity.From.Id);
             switch (activity.GetActivityType())
             {
-
-
                 case ActivityTypes.Message:
-
+                  log.Info($"ACTIVITY TYPE: MESSAGE");
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
@@ -84,7 +82,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       var reply = activity.CreateReply();
                       reply.Text = questions[actualID].text;
                       List<CardAction> cardButtons = new List<CardAction>();
-                      if(questions[actualID].showLinks==true){
+                      if(questions[actualID].showLinks){
                         for(int k=0; k<questions[actualID].links.Length; k++){
                           CardAction plButton = new CardAction()
                           {
@@ -144,7 +142,8 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-
+                log.Info($"ACTIVITY TYPE: ConversationUpdate");
+                //if(questions[actualID]=="0"){
                 /*
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
@@ -154,14 +153,16 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   reply3.Text = questions[actualID].text;
 
                   List<CardAction> cardButtons1 = new List<CardAction>();
-                  for(int k=0; k<questions[actualID].links.Length; k++){
-                    CardAction plButton = new CardAction()
-                    {
-                      Value = questions[actualID].links[k].text,
-                      Type = "postBack",
-                      Title = questions[actualID].links[k].text
-                    };
-                    cardButtons1.Add(plButton);
+                  if(questions[actualID].showLinks){
+                    for(int k=0; k<questions[actualID].links.Length; k++){
+                      CardAction plButton = new CardAction()
+                      {
+                        Value = questions[actualID].links[k].text,
+                        Type = "postBack",
+                        Title = questions[actualID].links[k].text
+                      };
+                      cardButtons1.Add(plButton);
+                    }
                   }
                   List<CardImage> cardImages1 = new List<CardImage>();
                   for(int k=0; k<questions[actualID].links.Length; k++){
@@ -201,6 +202,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         }
                     }
                     */
+                  //}
                   break;
                 case ActivityTypes.ContactRelationUpdate:
 

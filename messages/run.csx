@@ -61,7 +61,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  log.Info($"ACTIVITY TYPE: MESSAGE");
+                  log.Info($"ACTIVITY TYPE: MESSAGE (QUESTION-ID: {questions[actualID]}");
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
@@ -142,7 +142,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                log.Info($"ACTIVITY TYPE: ConversationUpdate");
+                log.Info($"ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {questions[actualID]}");
                 //if(questions[actualID]=="0"){
                 /*
                   var reply3 = activity.CreateReply();

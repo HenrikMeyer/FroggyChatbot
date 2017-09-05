@@ -79,7 +79,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       var reply = activity.CreateReply();
                       reply.Text = questions[actualID].text;
                       List<CardAction> cardButtons = new List<CardAction>();
-                      if(questions[actualID].showLinks){
+                      if(!questions[actualID].showLinks){
                         for(int k=0; k<questions[actualID].links.Length; k++){
                           CardAction plButton = new CardAction()
                           {
@@ -151,7 +151,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   reply3.Text = questions[actualID].text;
 
                   List<CardAction> cardButtons1 = new List<CardAction>();
-                  if(questions[actualID].showLinks){
+                  if(!questions[actualID].showLinks){
                     for(int k=0; k<questions[actualID].links.Length; k++){
                       CardAction plButton = new CardAction()
                       {

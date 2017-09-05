@@ -15,6 +15,17 @@ static var questions = new Dictionary<String, Question>(){
   {
     "1",
     new Question(
+      "Welche Frabe hat der Himmel?",
+      new QuestionLink[]{
+        new QuestionLink("Blau", "0"),
+        new QuestionLink("blau", "0")
+      },
+      true
+    )
+  },
+  {
+    "2",
+    new Question(
       "Nett dich kennen zu lernen.",
       new QuestionLink[]{
         new QuestionLink("OK", "0")

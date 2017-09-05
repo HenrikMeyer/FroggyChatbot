@@ -44,7 +44,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         {
             var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
-            String actualID = "0";
+            String actualID = "START";
             log.Info("USER:");
             foreach(KeyValuePair<string, string> entry in users)
             {
@@ -61,7 +61,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  log.Info($"ACTIVITY TYPE: MESSAGE (QUESTION-ID: {actualID}");
+                  log.Info($"ACTIVITY TYPE: MESSAGE (QUESTION-ID: {actualID})");
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
@@ -142,8 +142,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   break;
 
                 case ActivityTypes.ConversationUpdate:
-                log.Info($"ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {actualID}");
-                //if(questions[actualID]=="0"){
+
+                log.Info($"ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {actualID})");
+                if(questions[actualID]=="START"){
                 /*
                   var reply3 = activity.CreateReply();
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
@@ -202,7 +203,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         }
                     }
                     */
-                  //}
+                  }
                   break;
                 case ActivityTypes.ContactRelationUpdate:
 

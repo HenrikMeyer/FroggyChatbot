@@ -25,7 +25,7 @@ static var users = new Dictionary<String, String>(){};
 
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
-    log.Info($"Webhook was triggered!");
+    log.Info($"1) WEBHOOK TRIGGERED");
     // Initialize the azure bot
     using (BotService.Initialize())
     {
@@ -44,37 +44,34 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         {
             var client = new ConnectorClient(new Uri(activity.ServiceUrl));
             // one of these will have an interface and process it
-            String actualID = "0";
-            log.Info("USER:");
+            log.Info("2) All Users:");
             foreach(KeyValuePair<string, string> entry in users)
             {
               log.Info("-> "+entry.Key+", "+entry.Value);
             }
-            log.Info("USER_END");
-
+            log.Info("3) GENERATE ACTUAL QUESTION ID (0)");
+            String actualID = "0";
             if(users.ContainsKey(activity.From.Id+"")){
-              log.Info("##CONTAINS KEY!");
+              log.Info($"4) USER ALREADY KNOWN. SET ACTUAL QUESTUON TO {users[activity.From.Id}");
               actualID = users[activity.From.Id+""];
             }
-            log.Info("ACTUAL ID: "+actualID);
-            log.Info("ACTUAL USER ID: "+activity.From.Id);
+            log.Info("4) ACTUAL QUESTION ID: "+actualID);
+            log.Info("5) ACTUAL USER ID: "+activity.From.Id);
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                  log.Info($"ACTIVITY TYPE: MESSAGE (QUESTION-ID: {actualID})");
+                  log.Info($"6) ACTIVITY TYPE: MESSAGE (QUESTION-ID: {actualID})");
                   bool found=false;
                   int i = 0;
                   while(found==false && i<questions[actualID].links.Length){
                     if(questions[actualID].links[i].text==activity.Text){
                       found = true;
-                      log.Info("USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
+                      log.Info("7)USERS ADD ACTIVITY FROM ID (RAW): "+activity.From.Id);
                       if(users.ContainsKey(activity.From.Id+"")){
                         users[activity.From.Id+""]=questions[actualID].links[i].questionID;
                       }
                       else{
-
                         users.Add(activity.From.Id+"", questions[actualID].links[i].questionID);
-
                       }
                       actualID=questions[actualID].links[i].questionID;
 
@@ -143,7 +140,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
                 case ActivityTypes.ConversationUpdate:
 
-                log.Info($"ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {actualID})");
+                log.Info($"6) ACTIVITY TYPE: ConversationUpdate (QUESTION-ID: {actualID})");
 
                 /*
                   var reply3 = activity.CreateReply();
@@ -203,7 +200,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         }
                     }
                     */
-                  
+
                   break;
                 case ActivityTypes.ContactRelationUpdate:
 

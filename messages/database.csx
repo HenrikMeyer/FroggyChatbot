@@ -1,13 +1,13 @@
 using System;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
 string connetionString = null;
 
-string  ServerName = "froggy_chatbot";
-string  UserName   = "Froggy";
-string  Password   = "t4stE9~2";
+string  ServerName    = "qfrog.de";
+string  DatabaseName  = "froggy_chatbot";
+string  UserName      = "Froggy";
+string  Password      = "t4stE9~2";
 
 SqlConnection cnn ;
 connetionString = "Data Source="+ServerName+";Initial Catalog="+DatabaseName+";User ID="+UserName+";Password="+Password;

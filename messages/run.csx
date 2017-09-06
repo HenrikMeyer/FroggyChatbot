@@ -105,7 +105,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         Buttons = cardButtons
                       };
                       Attachment plAttachment = plCard.ToAttachment();
-                      if(cardButtons.length>0||cardImages.length>0){
+                      if(cardButtons.Count>0||cardImages.Count>0){
                         reply.Attachments.Add(plAttachment);
                       }
 

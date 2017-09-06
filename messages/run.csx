@@ -2,6 +2,7 @@
 #load "BasicLuisDialog.csx"
 #load "Questions.csx"
 
+#load "database.csx"
 
 using System;
 using System.Net;
@@ -76,15 +77,15 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       actualID=questions[actualID].links[i].questionID;
 
 
-                      var reply = activity.CreateReply();
-                      reply.Text = questions[actualID].text;
+                      var reply   = activity.CreateReply();
+                      reply.Text  = questions[actualID].text;
                       List<CardAction> cardButtons = new List<CardAction>();
                       if(questions[actualID].showLinks){
                         for(int k=0; k<questions[actualID].links.Length; k++){
                           CardAction plButton = new CardAction()
                           {
                             Value = questions[actualID].links[k].text,
-                            Type = "postBack",
+                            Type  = "postBack",
                             Title = questions[actualID].links[k].text
                           };
                           cardButtons.Add(plButton);
@@ -101,7 +102,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       HeroCard plCard = new HeroCard()
                       {
                         //Subtitle = questions[actualID].text,
-                        Images = cardImages,
+                        Images  = cardImages,
                         Buttons = cardButtons
                       };
                       Attachment plAttachment = plCard.ToAttachment();
@@ -147,7 +148,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                   reply3.Text = "Hallo. Sie haben ein Problem? Um Ihnen helfen zu können, muss ich wissen, welcher Anschluss gestört ist. Um welche Rufnummer oder Kundennummer geht es? Bitte schicken Sie mir eine der beiden Nummern.";
                   await client.Conversations.ReplyToActivityAsync(reply3);
                   */
-                  var reply3 = activity.CreateReply();
+                  var reply3  = activity.CreateReply();
                   reply3.Text = questions[actualID].text;
 
                   List<CardAction> cardButtons1 = new List<CardAction>();
@@ -156,7 +157,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                       CardAction plButton = new CardAction()
                       {
                         Value = questions[actualID].links[k].text,
-                        Type = "postBack",
+                        Type  = "postBack",
                         Title = questions[actualID].links[k].text
                       };
                       cardButtons1.Add(plButton);
@@ -224,25 +225,25 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 public class Question
 {
-    public String text;           //Question Text
+    public String         text;           //Question Text
     public QuestionLink[] links;  //Array of possible Answers with ID of connected next Question#
-    public bool showLinks;
-    public String[] imageURLs;
+    public bool           showLinks;
+    public String[]       imageURLs;
 
     public Question(String text, QuestionLink[] links, bool showLinks, String[] imageURLs)
     {
-      this.text = text;
-      this.links = links;
-      this.showLinks = showLinks;
-      this.imageURLs = imageURLs;
+      this.text       = text;
+      this.links      = links;
+      this.showLinks  = showLinks;
+      this.imageURLs  = imageURLs;
     }
 
     public Question(String text, QuestionLink[] links, bool showLinks)
     {
-      this.text = text;
-      this.links = links;
-      this.showLinks = showLinks;
-      this.imageURLs = null;
+      this.text       = text;
+      this.links      = links;
+      this.showLinks  = showLinks;
+      this.imageURLs  = null;
     }
 }
 
@@ -253,7 +254,7 @@ public class QuestionLink
 
     public QuestionLink(String text, String questionID)
     {
-      this.text = text;
+      this.text       = text;
       this.questionID = questionID;
     }
 }

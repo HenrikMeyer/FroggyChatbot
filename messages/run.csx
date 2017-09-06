@@ -16,10 +16,6 @@ using Microsoft.Bot.Connector;
 using System.Collections.Generic;
 using System.Drawing;
 
-//#########################################
-using System.Data.SqlClient;
-//#########################################
-
 //questions["0"] = new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")});
 //questions["1"] = new Question("Willst du Frage 1 hören?", new QuestionLink[]{new QuestionLink("Ja", "0")});
 //questions.Add("0", new Question("Willst du Frage 2 hören?", new QuestionLink[]{new QuestionLink("Ja", "1")}));
@@ -31,26 +27,6 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"1) WEBHOOK TRIGGERED");
 
-    //#########################################
-    string connetionString = null;
-
-    string  ServerName    = "qfrog.de";
-    string  DatabaseName  = "froggy_chatbot";
-    string  UserName      = "Froggy";
-    string  Password      = "t4stE9~2";
-
-    SqlConnection cnn ;
-    connetionString = "Data Source="+ServerName+";Initial Catalog="+DatabaseName+";User ID="+UserName+";Password="+Password;
-    cnn = new SqlConnection(connetionString);
-    try {
-      cnn.Open();
-      log.Info("Connection Open ! ");
-      cnn.Close();
-    }
-    catch (Exception ex){
-      log.Info("Can not open connection ! "+ex);
-    }
-    //#########################################
 
     // Initialize the azure bot
     using (BotService.Initialize())

@@ -2,8 +2,6 @@
 #load "BasicLuisDialog.csx"
 #load "Questions.csx"
 
-#load "database.csx"
-
 using System;
 using System.Net;
 using System.Threading;

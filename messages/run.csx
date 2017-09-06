@@ -44,11 +44,11 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     cnn = new SqlConnection(connetionString);
     try {
       cnn.Open();
-      Debug.WriteLine("Connection Open ! ");
+      log.Info("Connection Open ! ");
       cnn.Close();
     }
     catch (Exception ex){
-      Debug.WriteLine("Can not open connection ! "+ex);
+      log.Info("Can not open connection ! "+ex);
     }
     //#########################################
 

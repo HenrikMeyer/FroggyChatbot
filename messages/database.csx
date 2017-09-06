@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.Diagnostics;
 
 string connetionString = null;
 
@@ -14,9 +14,9 @@ connetionString = "Data Source="+ServerName+";Initial Catalog="+DatabaseName+";U
 cnn = new SqlConnection(connetionString);
 try {
   cnn.Open();
-  log.Info("Connection Open ! ");
+  Debug.WriteLine("Connection Open ! ");
   cnn.Close();
 }
 catch (Exception ex){
-  log.Info("Can not open connection ! ");
+  Debug.WriteLine("Can not open connection ! ");
 }
